@@ -1,7 +1,5 @@
 package com.juaracoding.cucumber4.glue;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.AfterClass;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +7,6 @@ import org.springframework.test.context.ContextConfiguration;
 
 import com.juaracoding.cucumber4.config.AutomationFrameworkConfig;
 import com.juaracoding.cucumber4.drivers.DriverSingleton;
-import com.juaracoding.cucumber4.pages.BookingPage;
-import com.juaracoding.cucumber4.pages.LoginPage;
 import com.juaracoding.cucumber4.utils.ConfigurationProperties;
 import com.juaracoding.cucumber4.utils.Constants;
 
@@ -25,8 +21,8 @@ import io.cucumber.spring.CucumberContextConfiguration;
 public class StepDefinition {
 
 	private WebDriver driver;
-	private LoginPage loginPage;
-	private BookingPage bookingPage;
+//	private LoginPage loginPage;
+//	private BookingPage bookingPage;
 
 	@Autowired
 	ConfigurationProperties configurationProperties;
@@ -34,8 +30,8 @@ public class StepDefinition {
 	@Before
 	public void initializeObjects() {
 		DriverSingleton.getInstance(configurationProperties.getBrowser());
-		loginPage = new LoginPage();
-		bookingPage = new BookingPage();
+//		loginPage = new LoginPage();
+//		bookingPage = new BookingPage();
 	}
 
 	@AfterClass
@@ -51,7 +47,7 @@ public class StepDefinition {
 
 	@When("Customer klik login button")
 	public void customer_klik_login_button() {
-		loginPage.submitLogin(configurationProperties.getEmail(), configurationProperties.getPassword());
+//		loginPage.submitLogin(configurationProperties.getEmail(), configurationProperties.getPassword());
 	}
 
 	@Then("Customer berhasil login")
@@ -59,17 +55,17 @@ public class StepDefinition {
 		// refresh
 		driver.navigate().refresh();
 		tunggu();
-		assertEquals(configurationProperties.getTextWelcome(), loginPage.getTextWelcome());
+//		assertEquals(configurationProperties.getTextWelcome(), loginPage.getTextWelcome());
 	}
 
 	@When("Customer klik menu My Booking")
 	public void customer_klik_menu_my_booking() {
-		bookingPage.goToMenuMyBooking();
+//		bookingPage.goToMenuMyBooking();
 	}
 
 	@Then("Customer melihat page title")
 	public void customer_melihat_page_title() {
-		assertEquals(configurationProperties.getTextTitleBookingPage(), bookingPage.getTextTitleBookingPage());
+//		assertEquals(configurationProperties.getTextTitleBookingPage(), bookingPage.getTextTitleBookingPage());
 	}
 
 	public static void tunggu() {
